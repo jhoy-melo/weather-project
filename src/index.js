@@ -87,6 +87,7 @@ function showData(response) {
   let currentFeelsLike = Math.round(response.data.main.feels_like);
   celciusTemp = currentTemperature;
   fahrenTemp = (celciusTemp * 9) / 5 + 32;
+  let iconElement = document.querySelector("#icon");
 
   showCity(response.data.name);
 
@@ -107,7 +108,8 @@ function showData(response) {
   windSituation.innerHTML = `${currentWind}`;
   skySituation.innerHTML = `${currentSky}`;
   temperature.innerHTML = `${currentTemperature}`;
-
+iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+iconElement.setAttribute("alt", response.data.weather[0].main);
 }
 
 function showCity(cityName) {
