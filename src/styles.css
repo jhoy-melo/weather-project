@@ -13,7 +13,7 @@ h2 {
 small {
   margin-left: 5px;
   color: #000;
-  background-color: gray;
+ 
   border-radius: 10px;
   width: 450px;
   margin-top: 10px;
@@ -23,14 +23,11 @@ a {
   text-decoration: none;
 }
 .open-source:hover {
-  font-size: 13px;
+  font-size: 11px;
   transition: all 300ms;
   color: #000
 }
-a:hover{
-  color: #000;
-  transition: all 300ms;
-}
+
 ul {
   padding-left: 0px;
 }
@@ -89,6 +86,7 @@ li {
 }
 .float-left .active:hover{
   text-decoration: none;
+  transition: all 300ms;
 }
 
 #tempNextDaysHigh{
