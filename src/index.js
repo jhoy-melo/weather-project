@@ -55,9 +55,7 @@ let liveDates = document.querySelector("#liveDate");
 if (date < 10) date = `0${date}`;
 liveDates.innerHTML = `${date}/${month}/${year}`;
 
-
 //Getting typed location
-//let searchForm = document.querySelector("#city-Search");
 
 function searchCity(event) {
 
@@ -74,7 +72,6 @@ axios.get(`${apiUrl}`).then(showData);
 
 let searchForm = document.querySelector("#city-search");
 searchForm.addEventListener("submit", searchCity);
-//console.log(searchForm);
 
 function showData(response) {
   console.log(response);
@@ -90,10 +87,6 @@ function showData(response) {
   let iconElement = document.querySelector("#icon");
 
   showCity(response.data.name);
-
-  //let feelsLikeTemp = currentFeelsLike;
-  //let celsiusMaxTemp = currentTempMax;
-  //let celsiusMinTemp = currentTempMin;
 
   let feelsLike = document.querySelector("#feels-like");
   let maxTemp = document.querySelector("#max");
@@ -125,20 +118,20 @@ let currentTemp = document.querySelector("#temperature");
 function getFahren(event) {
   event.preventDefault();
   currentTemp.innerHTML = `${Math.round(fahrenTemp)}`;
-  tempFahrenheit.classList.add("disabled");
-  tempCelsius.classList.remove("disabled");
+  tempFahrenheit.classList.add("active");
+  tempCelsius.classList.remove("active");
 }
 
 function getCelcius(event) {
   event.preventDefault();
   currentTemp.innerHTML = `${Math.round(celciusTemp)}`;
-  tempCelsius.classList.add("disabled");
-  tempFahrenheit.classList.remove("disabled");
+  tempFahrenheit.classList.remove("active");
+  tempCelsius.classList.add("active");
+  
 }
 
 tempFahrenheit.addEventListener("click", getFahren);
 tempCelsius.addEventListener("click", getCelcius);
-
 
 function getCurrentPosition (position){
 let latitude = position.coords.latitude;

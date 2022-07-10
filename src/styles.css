@@ -82,7 +82,12 @@ li {
 .temp {
   font-size: 100px;
 }
-#celsius-link, #fahrenheit-link {
+
+.float-left .active{
+  cursor: default;
+  color: #000;
+}
+.float-left .active:hover{
   text-decoration: none;
 }
 
