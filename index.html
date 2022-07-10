@@ -24,7 +24,7 @@
   </head>
   <body>
     <div class="container">
-      <div class="card principal" style="width: 75rem">
+      <div class="card principal" style="width: 80rem">
         <div class="card-body">
           <form class="row" id="city-search">
             <div class="col-9">
@@ -58,7 +58,7 @@
             </span>
           </div>
 
-          <div class="row">
+          <div class="row infos">
             <div class="col-3" id="sky">Nublado</div>
             <div class="col-9">Wind: <span id="wind">18</span> km/h</div>
             <div class="col-3">H: <span id="max"> 14</span> °C | L: <span id="min">  13</span> °C</div>
@@ -71,7 +71,7 @@
                   <p>
                     <span class="emoji"> ☁️ </span>
                   </p>
-                  <div class="temparatureHL">H: 27°C | L: 17°C</div>
+                  <div class="temparatureHL">H: <span id="tempNextDaysHigh">27°C</span> | L: <span id="tempNextDaysLow">17°C</span> </div>
                   <strong> Mon </strong>
                 </div>
               </div>
@@ -83,7 +83,7 @@
                     <span class="emoji"> ⛅ </span>
                   </p>
 
-                  <div class="temparatureHL">H: 29°C | L: 17°C</div>
+                  <div class="temparatureHL">H: <span id="tempNextDaysHigh">27°C</span> | L: <span id="tempNextDaysLow">17°C</span> </div>
 
                   <strong> Tue </strong>
                 </div>
@@ -96,7 +96,7 @@
                     <span class="emoji"> 🌦️ </span>
                   </p>
 
-                  <div class="temparatureHL">H: 31°C | L: 17°C</div>
+                  <div class="temparatureHL">H: <span id="tempNextDaysHigh">27°C</span> | L: <span id="tempNextDaysLow">17°C</span> </div>
 
                   <strong> Wed </strong>
                 </div>
@@ -108,7 +108,7 @@
                   <p>
                     <span class="emoji"> 🌧️ </span>
                   </p>
-                  <div class="temparatureHL">H: 31°C | L: 18°C</div>
+                  <div class="temparatureHL">H: <span id="tempNextDaysHigh">27°C</span> | L: <span id="tempNextDaysLow">17°C</span> </div>
 
                   <strong> Thu </strong>
                 </div>
@@ -121,7 +121,7 @@
                     <span class="emoji"> 🌤️ </span>
                   </p>
 
-                  <div class="temparatureHL">H: 28°C | L: 18°C</div>
+                  <div class="temparatureHL">H: <span id="tempNextDaysHigh">27°C</span> | L: <span id="tempNextDaysLow">17°C</span> </div>
                   <strong> Fri </strong>
                 </div>
               </div>
@@ -133,7 +133,7 @@
                     <span class="emoji"> 🌩️ </span>
                   </p>
 
-                  <div class="temparatureHL">H: 26°C | L: 18°C</div>
+                  <div class="temparatureHL">H: <span id="tempNextDaysHigh">27°C</span> | L: <span id="tempNextDaysLow">17°C</span> </div>
                   <strong> Sat </strong>
                 </div>
               </div>
@@ -141,7 +141,7 @@
           </div>
         </div>
         <small>
-        <a href="https://github.com/jhoy-melo/weather-project" target=”_blank”>Open-source code</a>
+        <a href="https://github.com/jhoy-melo/weather-project" target=”_blank” class="open-source"  >Open-source code</a>
            by Joyce Melo | 👉 Latest update
           <span id="liveDate">24/04/2022 </span>
           <span id="liveHours">22:00PM</span>

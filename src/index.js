@@ -52,7 +52,9 @@ let liveHours = document.querySelector("#liveHours");
 liveHours.innerHTML = hours + ":" + minutes;
 
 let liveDates = document.querySelector("#liveDate");
+if (date < 10) date = `0${date}`;
 liveDates.innerHTML = `${date}/${month}/${year}`;
+
 
 //Getting typed location
 //let searchForm = document.querySelector("#city-Search");

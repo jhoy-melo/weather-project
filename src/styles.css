@@ -1,8 +1,9 @@
 h1 {
   color: #000;
   text-align: center;
-  font-size: 60px;
+  font-size: 70px;
   margin: 10px 0 10px 0;
+  font-style: italic;
 }
 h2 {
   font-size: 80px;
@@ -11,11 +12,24 @@ h2 {
 }
 small {
   margin-left: 5px;
-  color: #fff;
-  background-color: #113f67;
+  color: #000;
+  background-color: gray;
   border-radius: 10px;
   width: 450px;
   margin-top: 10px;
+}
+a {
+  color: #000;
+  text-decoration: none;
+}
+.open-source:hover {
+  font-size: 13px;
+  transition: all 300ms;
+  color: #000
+}
+a:hover{
+  color: #000;
+  transition: all 300ms;
 }
 ul {
   padding-left: 0px;
@@ -24,22 +38,19 @@ li {
   display: inline;
   margin-top: 10px;
 }
-.container{
-  border-left-width: 10px;
-  border-right-width: 10px;
-  margin-left: 50px
+.infos{
+  font-size: 15px;
 }
 
 .card {
-  margin-top: 10px;
-  margin-right: 10px;
-  opacity: 2;
+  margin: 30px 10px auto;
+  opacity: 80%;
 }
 .temp-day {
   text-align: center;
   font-size: 25px;
-  margin-top: 0;
 }
+
 .emoji {
   font-size: 80px;
 }
@@ -48,13 +59,7 @@ li {
   text-align: center;
   font-size: 16px;
 }
-.principal {
-  background-repeat: no-repeat;
-  opacity: 0.7;
-  background-size: cover;
-  height: 100%;
-  
-}
+
 .units {
   position: relative;
   top: -50px;
@@ -80,6 +85,9 @@ li {
 }
 #fahrenheit-link {
   text-decoration: none;
+}
+#tempNextDaysHigh{
+  font-weight: bold;
 }
 body{
   font-family: "Work Sans", sans-serif;
