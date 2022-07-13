@@ -70,6 +70,34 @@ axios.get(`${apiUrl}`).then(showData);
   event.preventDefault();
 }
 
+function displayForecast(){
+  let forecastElement = document.querySelector("#forecast");
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue"];
+  let forecastHTML = `<div class="row">`;
+ 
+  days.forEach(function(day) {
+
+    forecastHTML = forecastHTML + `
+    <div class="col-2 temp-day">
+      <div class="card">
+        <div class="card-body">
+          <img 
+          src="http://openweathermap.org/img/wn/10d@2x.png" 
+          alt="clear" 
+          id="icon-forecast"
+          />
+          <div class="temparatureHL">H: <span id="tempNextDaysHigh">27°C</span> | L: <span id="tempNextDaysLow">17°C</span> </div>
+          <div class="weather-forecast-date"> ${day}</div>
+        </div>
+      </div>
+    </div>
+  `;
+  });
+  
+forecastHTML = forecastHTML + `</div>`;
+forecastElement.innerHTML = forecastHTML;
+}
+
 let searchForm = document.querySelector("#city-search");
 searchForm.addEventListener("submit", searchCity);
 
@@ -153,3 +181,4 @@ let buttonClick = document.querySelector("#current")
 buttonClick.addEventListener("click", retrievePosition);
 
 
+displayForecast();
