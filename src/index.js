@@ -57,19 +57,23 @@ liveDates.innerHTML = `${date}/${month}/${year}`;
 
 //Getting typed location
 
-function searchCity(event) {
+function search(city) {
+  let apiKey = "d845093c0eaa197bbff6962d62d10bc4";
+  let units = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+  
+  axios.get(`${apiUrl}`).then(showData);
 
-let cityInput = document.querySelector("#location");
-
-let apiKey = "d845093c0eaa197bbff6962d62d10bc4";
-let units = "metric";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${apiKey}&units=${units}`;
-
-axios.get(`${apiUrl}`).then(showData);
-
-event.preventDefault();
 }
 
+
+function handleSubmit(event) {
+event.preventDefault();
+let cityInputElement = document.querySelector("#city-input");
+search(cityInputElement.value);
+}
+
+search("São Paulo");
 
 function formatDay(timestamp) {
 let date = new Date(timestamp * 1000);
@@ -89,7 +93,7 @@ let forecast = response.data.daily;
     if (index >= 1 && index <= 6) {
     forecastHTML = forecastHTML + `
     <div class="col-2 temp-day">
-      <div class="card">
+    <div class="card little-cards">
         <div class="card-body">
           <img 
           src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" 
@@ -97,10 +101,10 @@ let forecast = response.data.daily;
           id="icon-forecast"
           />
           <div class="temparatureHL">H: <span id="tempNextDaysHigh">${Math.round(forecastDay.temp.max)}°C</span> | L: <span id="tempNextDaysLow">${Math.round(forecastDay.temp.min)}°C</span> </div>
-          <div class="weather-forecast-date"> ${formatDay(forecastDay.dt)}</div>
-        </div>
-      </div>
+          <div class="weather-forecast-date"> ${formatDay(forecastDay.dt)}</div>    
     </div>
+      </div>
+      </div>
   `;
 }
   });
@@ -109,8 +113,8 @@ forecastHTML = forecastHTML + `</div>`;
 forecastElement.innerHTML = forecastHTML;
 }
 
-let searchForm = document.querySelector("#city-search");
-searchForm.addEventListener("submit", searchCity);
+let form = document.querySelector("#city-search");
+form.addEventListener("submit", handleSubmit);
 
 function getForecast(coordinates) {
   let apiKey = "d845093c0eaa197bbff6962d62d10bc4";

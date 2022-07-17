@@ -1,5 +1,5 @@
 h1 {
-  color: #000;
+  color:#20615b;
   text-align: center;
   font-size: 70px;
   margin: 10px 0 10px 0;
@@ -13,7 +13,6 @@ h2 {
 small {
   margin-left: 5px;
   color: #000;
- 
   border-radius: 10px;
   width: 450px;
   margin-top: 10px;
@@ -22,11 +21,6 @@ a {
   color: #000;
   text-decoration: none;
 }
-.open-source:hover {
-  font-size: 11px;
-  transition: all 300ms;
-  color: #000
-}
 
 ul {
   padding-left: 0px;
@@ -34,11 +28,6 @@ ul {
 li {
   display: inline;
   margin-top: 10px;
-}
-#icon{
-  position: relative;
-  top: -30px;
-  width: 120px;
 }
 
 .infos{
@@ -68,6 +57,41 @@ li {
   top: -50px;
 }
 
+.temp {
+  font-size: 100px;
+}
+
+.float-left {
+  cursor: default;
+  color: #000;
+}
+
+.open-source:hover {
+  transition: all 300ms;
+  color: #20615b;
+}
+
+.weather-forecast-date{
+  font-size: 20px;
+}
+
+.little-cards{
+border-radius: 30px;
+opacity: 100%;
+border-color:#20615b;
+
+}
+
+#icon{
+  position: relative;
+  top: -30px;
+  width: 100px;
+}
+
+#tempNextDaysHigh{
+  font-weight: bold;
+}
+
 #weekDay, #liveHour{
   color: #000;
   list-style-type: none;
@@ -76,58 +100,100 @@ li {
   font-size: 15px;
 }
 
-.temp {
-  font-size: 100px;
+@keyframes move-background {
+  from {
+		-webkit-transform: translate3d(0px, 0px, 0px);
+	}
+	to { 
+		-webkit-transform: translate3d(1000px, 0px, 0px);
+	}
+}
+@-webkit-keyframes move-background {
+  from {
+		-webkit-transform: translate3d(0px, 0px, 0px);
+	}
+	to { 
+		-webkit-transform: translate3d(1000px, 0px, 0px);
+	}
 }
 
-.float-left .active{
-  cursor: default;
-  color: #000;
-}
-.float-left .active:hover{
-  text-decoration: none;
-  transition: all 300ms;
+@-moz-keyframes move-background {    
+	from {
+		-webkit-transform: translate3d(0px, 0px, 0px);
+	}
+	to { 
+		-webkit-transform: translate3d(1000px, 0px, 0px);
+	}
 }
 
-#tempNextDaysHigh{
-  font-weight: bold;
+    @-webkit-keyframes move-background {
+	from {
+		-webkit-transform: translate3d(0px, 0px, 0px);
+	}
+	to { 
+		-webkit-transform: translate3d(1000px, 0px, 0px);
+	}
 }
-body{
-  font-family: "Work Sans", sans-serif;
-  opacity: 3;
-	margin:0;
-	padding:0;
-	font-size:12px;
-    background: #2980b9 url('https://static.tumblr.com/03fbbc566b081016810402488936fbae/pqpk3dn/MRSmlzpj3/tumblr_static_bg3.png') repeat 0 0;
-	-webkit-animation: 10s linear 0s normal none infinite animate;
-	-moz-animation: 10s linear 0s normal none infinite animate;
-	-ms-animation: 10s linear 0s normal none infinite animate;
-	-o-animation: 10s linear 0s normal none infinite animate;
-	animation: 10s linear 0s normal none infinite animate;
- 
+
+.background-container{
+	position: fixed;
+	top: 0;
+	left:0;
+	bottom: 0;
+	right: 0;
 }
- 
-@-webkit-keyframes animate {
-	from {background-position:0 0;}
-	to {background-position: 500px 0;}
+
+.stars {
+ background: black url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/stars.png) repeat;
+ position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: block;
+  	z-index: 0;
 }
- 
-@-moz-keyframes animate {
-	from {background-position:0 0;}
-	to {background-position: 500px 0;}
+
+.twinkling{
+	width:10000px;
+	height: 100%;
+	background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/twinkling.png") repeat;
+	background-size: 1000px 1000px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    
+    -moz-animation:move-background 70s linear infinite;
+  -ms-animation:move-background 70s linear infinite;
+  -o-animation:move-background 70s linear infinite;
+  -webkit-animation:move-background 70s linear infinite;
+  animation:move-background 70s linear infinite;
+	
 }
- 
-@-ms-keyframes animate {
-	from {background-position:0 0;}
-	to {background-position: 500px 0;}
+
+.clouds{
+	width:10000px;
+	height: 100%;
+	background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/clouds_repeat.png") repeat;
+	background-size: 1000px 1000px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 3;
+
+   -moz-animation:move-background 100s linear infinite;
+  -ms-animation:move-background 100s linear infinite;
+  -o-animation:move-background 100s linear infinite;
+  -webkit-animation:move-background 100s linear infinite;
+  animation:move-background 100s linear infinite;
 }
- 
-@-o-keyframes animate {
-	from {background-position:0 0;}
-	to {background-position: 500px 0;}
-}
- 
-@keyframes animate {
-	from {background-position:0 0;}
-	to {background-position: 500px 0;}
+.backgroundImg{
+  height: 70vh;
+  width:70vh;
+  position: absolute;
+  z-index: 3;
+  right: 20px;
 }
