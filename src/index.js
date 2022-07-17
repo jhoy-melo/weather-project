@@ -57,47 +57,52 @@ liveDates.innerHTML = `${date}/${month}/${year}`;
 
 //Getting typed location
 
-function searchCity(city) {
+function searchCity(event) {
+
+let cityInput = document.querySelector("#location");
 
 let apiKey = "d845093c0eaa197bbff6962d62d10bc4";
 let units = "metric";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${apiKey}&units=${units}`;
 
 axios.get(`${apiUrl}`).then(showData);
 
+event.preventDefault();
 }
 
-function handleSubmit(event) {
-  event.preventDefault();
-  let cityInput = document.querySelector("#location");
-searchCity(cityInput.value);
 
+function formatDay(timestamp) {
+let date = new Date(timestamp * 1000);
+let day = date.getDay();
+let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+return days[day];
 }
 
 function displayForecast(response){
-console.log(response.data.daily);
+let forecast = response.data.daily;
 
   let forecastElement = document.querySelector("#forecast");
 
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue"];
-
   let forecastHTML = `<div class="row">`;
-  days.forEach(function(day) {
+  forecast.forEach(function(forecastDay, index) {
+    if (index >= 1 && index <= 6) {
     forecastHTML = forecastHTML + `
     <div class="col-2 temp-day">
       <div class="card">
         <div class="card-body">
           <img 
-          src="http://openweathermap.org/img/wn/10d@2x.png" 
+          src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" 
           alt="clear" 
           id="icon-forecast"
           />
-          <div class="temparatureHL">H: <span id="tempNextDaysHigh">27°C</span> | L: <span id="tempNextDaysLow">17°C</span> </div>
-          <div class="weather-forecast-date"> ${day}</div>
+          <div class="temparatureHL">H: <span id="tempNextDaysHigh">${Math.round(forecastDay.temp.max)}°C</span> | L: <span id="tempNextDaysLow">${Math.round(forecastDay.temp.min)}°C</span> </div>
+          <div class="weather-forecast-date"> ${formatDay(forecastDay.dt)}</div>
         </div>
       </div>
     </div>
   `;
+}
   });
   
 forecastHTML = forecastHTML + `</div>`;
@@ -197,4 +202,4 @@ function retrievePosition(event){
 let buttonClick = document.querySelector("#current")
 buttonClick.addEventListener("click", retrievePosition);
 
-searchCity("New York");
+//searchCity("New York");
