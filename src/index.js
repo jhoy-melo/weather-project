@@ -113,15 +113,12 @@ let searchForm = document.querySelector("#city-search");
 searchForm.addEventListener("submit", searchCity);
 
 function getForecast(coordinates) {
-  console.log(coordinates);
   let apiKey = "d845093c0eaa197bbff6962d62d10bc4";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-  console.log(apiUrl);
   axios.get(apiUrl).then(displayForecast);
 }
 
 function showData(response) {
-console.log(response);
   let currentTemperature = Math.round(response.data.main.temp);
   let currentSky = response.data.weather[0].main;
   let wind = Math.round(response.data.wind.speed);
@@ -130,7 +127,6 @@ console.log(response);
   let currentTempMin = Math.round(response.data.main.temp_min);
   let currentFeelsLike = Math.round(response.data.main.feels_like);
   celciusTemp = currentTemperature;
-  fahrenTemp = (celciusTemp * 9) / 5 + 32;
   let iconElement = document.querySelector("#icon");
 
   showCity(response.data.name);
@@ -156,32 +152,11 @@ getForecast(response.data.coord);
 }
 
 function showCity(cityName) {
-  
   let city = document.querySelector("#city");
   city.innerHTML = cityName;
 }
 
-let tempCelsius = document.querySelector("#celsius-link");
-let tempFahrenheit = document.querySelector("#fahrenheit-link");
 let currentTemp = document.querySelector("#temperature");
-
-function getFahren(event) {
-  event.preventDefault();
-  currentTemp.innerHTML = `${Math.round(fahrenTemp)}`;
-  tempFahrenheit.classList.add("active");
-  tempCelsius.classList.remove("active");
-}
-
-function getCelcius(event) {
-  event.preventDefault();
-  currentTemp.innerHTML = `${Math.round(celciusTemp)}`;
-  tempFahrenheit.classList.remove("active");
-  tempCelsius.classList.add("active");
-  
-}
-
-tempFahrenheit.addEventListener("click", getFahren);
-tempCelsius.addEventListener("click", getCelcius);
 
 function getCurrentPosition (position){
 let latitude = position.coords.latitude;
@@ -201,5 +176,3 @@ function retrievePosition(event){
 
 let buttonClick = document.querySelector("#current")
 buttonClick.addEventListener("click", retrievePosition);
-
-//searchCity("New York");
