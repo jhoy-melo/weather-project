@@ -57,26 +57,32 @@ liveDates.innerHTML = `${date}/${month}/${year}`;
 
 //Getting typed location
 
-function searchCity(event) {
-
-let cityInput = document.querySelector("#location");
+function searchCity(city) {
 
 let apiKey = "d845093c0eaa197bbff6962d62d10bc4";
 let units = "metric";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${apiKey}&units=${units}`;
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
 
 axios.get(`${apiUrl}`).then(showData);
 
-  event.preventDefault();
 }
 
-function displayForecast(){
-  let forecastElement = document.querySelector("#forecast");
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue"];
-  let forecastHTML = `<div class="row">`;
- 
-  days.forEach(function(day) {
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInput = document.querySelector("#location");
+searchCity(cityInput.value);
 
+}
+
+function displayForecast(response){
+console.log(response.data.daily);
+
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = ["Thu", "Fri", "Sat", "Sun", "Mon", "Tue"];
+
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function(day) {
     forecastHTML = forecastHTML + `
     <div class="col-2 temp-day">
       <div class="card">
@@ -101,8 +107,16 @@ forecastElement.innerHTML = forecastHTML;
 let searchForm = document.querySelector("#city-search");
 searchForm.addEventListener("submit", searchCity);
 
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "d845093c0eaa197bbff6962d62d10bc4";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function showData(response) {
-  console.log(response);
+console.log(response);
   let currentTemperature = Math.round(response.data.main.temp);
   let currentSky = response.data.weather[0].main;
   let wind = Math.round(response.data.wind.speed);
@@ -131,6 +145,9 @@ function showData(response) {
   temperature.innerHTML = `${currentTemperature}`;
 iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 iconElement.setAttribute("alt", response.data.weather[0].main);
+
+getForecast(response.data.coord);
+
 }
 
 function showCity(cityName) {
@@ -180,5 +197,4 @@ function retrievePosition(event){
 let buttonClick = document.querySelector("#current")
 buttonClick.addEventListener("click", retrievePosition);
 
-
-displayForecast();
+searchCity("New York");
